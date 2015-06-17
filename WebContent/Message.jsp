@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,8 +8,12 @@
 </head>
 <body>
 	<center>
-        <h3><%=request.getAttribute("Message")%></h3>
-        <h3><% out.print("<td><a href =productslist.jsp>show Contact list</a></td>");%></h3>
-    </center>
+		<h3><%=request.getAttribute("Message")%></h3>
+		<h3>
+			<%
+				out.print("<td><a href =productslist.jsp>show Contact list</a></td>");
+			%>
+		</h3>
+	</center>
 </body>
 </html>
