@@ -1,0 +1,11 @@
+@CHARSET "ISO-8859-1";
+.navbar-custom,a{
+    color:black;
+}
+a:hover{
+	color: orange;
+}
+.navbar-nav > li{
+  padding-left:10px;
+  padding-right:10px;
+}
