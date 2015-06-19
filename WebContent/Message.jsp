@@ -8,11 +8,10 @@
 </head>
 <body>
 	<center>
-		<h3><%=request.getAttribute("Message")%></h3>
+		
 		<h3>
-			<%
-				out.print("<td><a href =productslist.jsp>show Contact list</a></td>");
-			%>
+			
+			
 		</h3>
 	</center>
 </body>

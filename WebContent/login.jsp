@@ -15,7 +15,7 @@
     <script src = "Bootstrap/js/bootstrap.min.js"></script>
     <script src = "Bootstrap/js/bootstrap.npm.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title></title>
+<title>Shopaholics</title>
 </head>
 <body>
 <% RequestDispatcher dispatcher = request.getRequestDispatcher("header2.jsp");

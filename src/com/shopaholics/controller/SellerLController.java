@@ -52,7 +52,7 @@ public class SellerLController extends HttpServlet {
 			HttpSession hs = request.getSession();
 			//add name as session attribute
 			hs.setAttribute("sunm", name);
-			response.sendRedirect("seller.jsp");									
+			response.sendRedirect("productslist.jsp?username="+name);									
 			
 		}
 		else

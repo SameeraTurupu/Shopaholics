@@ -91,4 +91,54 @@
     <servlet-name>ShopaholicsLog</servlet-name>
     <url-pattern>/ShopaholicsLog</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteLController</display-name>
+    <servlet-name>DeleteLController</servlet-name>
+    <servlet-class>com.shopaholics.controller.DeleteLController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteLController</servlet-name>
+    <url-pattern>/DeleteLController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateLController</display-name>
+    <servlet-name>UpdateLController</servlet-name>
+    <servlet-class>com.shopaholics.controller.UpdateLController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateLController</servlet-name>
+    <url-pattern>/UpdateLController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ItemDisplayController</display-name>
+    <servlet-name>ItemDisplayController</servlet-name>
+    <servlet-class>com.shopaholics.controller.ItemDisplayController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ItemDisplayController</servlet-name>
+    <url-pattern>/ItemsDisplayController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CartListController</display-name>
+    <servlet-name>CartListController</servlet-name>
+    <servlet-class>com.shopaholics.controller.CartListController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CartListController</servlet-name>
+    <url-pattern>/CartListController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CartListDelController</display-name>
+    <servlet-name>CartListDelController</servlet-name>
+    <servlet-class>com.shopaholics.controller.CartListDelController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CartListDelController</servlet-name>
+    <url-pattern>/CartListDelController</url-pattern>
+  </servlet-mapping>
 </web-app>

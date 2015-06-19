@@ -8,13 +8,13 @@ public class ConnectionDAO {
 	Connection conn;
 	public Connection getConnection() throws ClassNotFoundException
 	{
-		String url = "jdbc:postgresql://localhost:5432/shopaholics";
-		String username = "postgres";
+		String url = "jdbc:mysql://localhost:3306/shopaholics";
+		String username = "root";
 		String password = "13wh1a0507";
 		Connection conn = null;
 		try {
 			//load Driver
-			Class.forName("org.postgresql.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
 			System.out.println("driver loaded");
 			//create connection
 			conn = DriverManager.getConnection(url, username, password);

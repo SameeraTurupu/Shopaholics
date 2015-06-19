@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Shopaholics</title>
 	<link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet">      
 	<link href="Bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="Bootstrap/css/bootstrap-theme.min.css.map" rel="stylesheet">
@@ -13,6 +13,8 @@
 	<link href="Bootstrap/css/sample.css" rel="stylesheet"/>
 	<script src = "Bootstrap/js/jquery.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	
 	<script src = "Bootstrap/js/bootstrap.js"></script>
@@ -27,78 +29,30 @@
         		<li><a class="navbar-brand" href="home.jsp">Home</a></li>
    						 <li class="dropdown">
       						<div class="dropdown">
-            <a id="dLabel" class="dropdown-toggle navbar-brand" data-toggle="dropdown" class="btn btn-primary" data-target="#" href="/page.html">
+            <a id="dLabel" class="dropdown-toggle navbar-brand" data-toggle="dropdown" class="btn btn-primary" data-target="#" href="#">
                 Categories<span class="caret"></span>
             </a>
     		<ul class="dropdown-menu" >
-              <li class="dropdown-submenu">
-                <a tabindex="-1" href="#">Electronics</a>
-                	<ul class="dropdown-menu">
-                  		<li class="dropdown-submenu">
-                    	<a href="#">Phones</a>
-                    	<ul class="dropdown-menu">
-                 			<li class="dropdown-submenu">
-                    			<li><a href="#">Samsung</a>
-                    			<li><a href="#">Windows</a>
-                    			<li><a href="#">iphone</a>
-                    			<li><a href="#">Motorola</a>
-                    			<li><a href="#">Micromax</a>
-                    			<li><a href="#">Karbonn</a>
-                    			<li><a href="#">HTC</a>
-                    		</li>
-                		</ul>
-                		<li class="dropdown-submenu">
-                    <a href="#">Laptops</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Lenovo</a></li>
-                        <li><a href="#">Apple Mac</a></li>
-                    	<li><a href="#">HP</a></li>
-                    	<li><a href="#">Acer</a></li>
-                    	<li><a href="#">Dell</a></li>
-                    	<li><a href="#">Toshiba</a></li>
-                    </ul>
-                  </li>
-                  <li class="dropdown-submenu">
-                    <a href="#">Cameras</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">3rd level</a></li>
-                    	<li><a href="#">3rd level</a></li>
-                    </ul>
-                  </li>
-                	</ul>
+              <li class="dropdown-submenu" name = "category">
+                <a tabindex="-1" href="cartlist.jsp?cat=Electronics">Electronics</a>
+       
                 <li class="dropdown-submenu">
-                <a tabindex="-1" href="#">Kitchen</a>
-                	<ul class="dropdown-menu">
-                  		<li class="dropdown-submenu">
-                    		<a href="#">Even More..</a>
-                	</ul>
-                <li class="dropdown-submenu">
-                <a tabindex="-1" href="#">HouseDecor</a>
-                	<ul class="dropdown-menu">
-                  		<li class="dropdown-submenu">
-                   		 <a href="#">Even More..</a>
-                	</ul>
+                <a tabindex="-1" href="cartlist.jsp?cat=Home and kitchen">Home and kitchen</a>
               </li>
               <li class="dropdown-submenu">
-                <a tabindex="-1" href="#">Clothing</a>
-                	<ul class="dropdown-menu">
-                  	<li class="dropdown-submenu">
-                    	<a href="#">Even More..</a>
-                	</ul>
+                <a tabindex="-1" href="cartlist.jsp?cat=Clothing and accessories">Clothing and accessories</a>
               </li>
                <li class="dropdown-submenu">
-                <a tabindex="-1" href="#">Health</a>
-                	<ul class="dropdown-menu">
-                  		<li class="dropdown-submenu">
-                    	<a href="#">Even More..</a>
-                	</ul>
+                <a tabindex="-1" href="cartlist.jsp?cat=Health">Health</a>
               </li>
                <li class="dropdown-submenu">
-                <a tabindex="-1" href="#">Sports</a>
-                	<ul class="dropdown-menu">
-                  		<li class="dropdown-submenu">
-                    	<a href="#">Even More..</a>
-                	</ul>
+                <a tabindex="-1" href="cartlist.jsp?cat=Sports">Sports</a>
+              </li>
+              <li class="dropdown-submenu">
+                <a tabindex="-1" href="cartlist.jsp?cat=Entertainment">Entertainment</a>
+              </li>
+              <li class="dropdown-submenu">
+                <a tabindex="-1" href="cartlist.jsp?cat=Kids">Kids</a>
               </li>
             </ul>
         </div>
@@ -108,6 +62,6 @@
        	</ul>
     	</div>
     </div>
-   </nav><br><br><br>
+   </nav><br>
 </body>
 </html>

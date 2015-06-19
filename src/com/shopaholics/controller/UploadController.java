@@ -7,13 +7,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
  
+
+
 
 
 
@@ -29,7 +33,7 @@ import javax.servlet.http.Part;
 @WebServlet("/uploadController")
 @MultipartConfig(maxFileSize = 16177215) 
 public class UploadController extends HttpServlet {
-	String url ="jdbc:mysql://localhost:3306/sample";
+	String url ="jdbc:mysql://localhost:3306/shopaholics";
 	//String url ="jdbc:postgresql://localhost:5432/sample";
 	String user ="root";
 	//String user ="postgres";
@@ -40,7 +44,7 @@ public class UploadController extends HttpServlet {
 		
 	}
 
-	
+	PreparedStatement st1 = null;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doProcess(request, response);
@@ -49,7 +53,13 @@ public class UploadController extends HttpServlet {
 		// gets values of text fields
         String productname = request.getParameter("productname");
         String description = request.getParameter("description");
-        //System.out.println("before");
+        String selected = null;
+       /* if(request.getParameter("points") != null) {
+        	selected = request.getParameter("points");
+        	 System.out.println("in if"+selected);
+        }*/
+        selected = request.getParameter("points");
+               System.out.println("selected"+selected);
         String img_id = request.getParameter("productid");
       //  System.out.println("after");
         String img = request.getParameter("photo");
@@ -83,9 +93,22 @@ public class UploadController extends HttpServlet {
         	//Class.forName("org.postgresql.Driver");
         	System.out.println("mysql driver is loaded");
             conn = DriverManager.getConnection(url, user, password);
- 
+            HttpSession hs = request.getSession();
+			//add name as session attribute
+			String name=(String)hs.getAttribute("sunm");
+            String query1 ="select seller_id from seller where seller_name = '"+name+"'";
+    		st1 = conn.prepareStatement(query1);
+    		System.out.println("after st1 ");
+    		ResultSet rst1 = st1.executeQuery();
+    		System.out.println("after rst1");
+    		int seller_id = 0;
+    		while(rst1.next()){
+    			seller_id = rst1.getInt("seller_id");
+    			System.out.println(seller_id);
+    		}
+    		
             // constructs SQL statement
-            String sql = "insert into product values (?,?,?,?,?,?,?)";
+            String sql = "insert into product(prod_id, prod_name,description,stock,price,image, offers,seller_id,main_cat) values (?,?,?,?,?,?,?,?,?)";
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, img_id);
             statement.setString(2, productname);
@@ -99,6 +122,9 @@ public class UploadController extends HttpServlet {
                 statement.setBlob(6, inputStream);
             }
             statement.setInt(7, offer);
+            statement.setInt(8, seller_id);
+            statement.setString(9, selected);
+            
             // sends the statement to the database server
             int row = statement.executeUpdate();
             if (row > 0) {
@@ -123,7 +149,7 @@ public class UploadController extends HttpServlet {
             request.setAttribute("Message", message);
              
             // forwards to the message page
-            getServletContext().getRequestDispatcher("/Message.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/productslist.jsp").forward(request, response);
         }
     }
 	}

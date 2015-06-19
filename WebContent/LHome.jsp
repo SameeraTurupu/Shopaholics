@@ -20,7 +20,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<title>Shopaholics</title>
 </head>
 <body>
 <% RequestDispatcher dispatcher = request.getRequestDispatcher("header3.jsp");
@@ -29,46 +29,154 @@
 <% RequestDispatcher dispatcher1 = request.getRequestDispatcher("Header.jsp");
         dispatcher1.include(request, response );
 %>
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="3000">
-  <!-- Indicators -->
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="2000">
+  
   <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
   </ol>
  
-  <!-- Wrapper for slides -->
+  
   <div class="carousel-inner">
     <div class="item active">
-      <img src="http://placehold.it/1200x315" alt="...">
+      <img src="./IMG/HEELS_COL.jpg" alt="...">
       <div class="carousel-caption">
-          <h3>Caption Text</h3>
       </div>
     </div>
     <div class="item">
-      <img src="http://placehold.it/1200x315" alt="...">
+      <img src="./IMG/Sydney.jpg" alt="...">
       <div class="carousel-caption">
-          <h3>Caption Text</h3>
       </div>
     </div>
     <div class="item">
-      <img src="http://placehold.it/1200x315" alt="...">
+      <img src="./IMG/7.jpg" alt="...">
       <div class="carousel-caption">
-          <h3>Caption Text</h3>
       </div>
     </div>
   </div>
  
-  <!-- Controls -->
+  
   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left"></span>
   </a>
   <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right"></span>
   </a>
-</div> <!-- Carousel --><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<% RequestDispatcher dispatcher2 = request.getRequestDispatcher("footer.jsp");
-        dispatcher2.include(request, response );
-%>
+</div> <br>
+
+<div class="container">
+  <h2>Latest</h2>
+          
+  <div class="row">
+    <div class="col-md-3">
+      <a href="nokialumia.jsp" class="thumbnail">
+       <img src="./IMG/nokia-lumia-830-orange-.jpg" alt="Pulpit Rock" style="width:120px;height:200px"><br>
+        <p>Nokia Lumia 830 Orange</p>
+        <p>Rs 20700</p>    
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="sonyXperia.jsp" class="thumbnail">
+        <img src="./IMG/B4989277.jpg" alt="Moustiers Sainte Marie" style="width:120px;height:200px">
+        <br>
+        <p>Sony Xperia C4 Dual SIM Black</p>
+        <p>Rs 25499</p>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="cinqueterre.jpg" class="thumbnail">
+       <img src="./IMG/B3658853.jpg" alt="Cinque Terre" style="width:120px;height:200px"><br>
+        <p>Nokia Lumia 930 Green</p>
+        <p>Rs 37391</p>      
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="cinqueterre.jpg" class="thumbnail">
+       <img src="./IMG/B4989275.jpg" alt="Cinque Terre" style="width:120px;height:200px"><br>
+        <p>Sony Xperia C4 Dual SIM White</p>
+        <p>Rs 28999</p>      
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2>Discounts</h2>
+          
+  <div class="row">
+    <div class="col-md-3">
+      <a href="pulpitrock.jpg" class="thumbnail">
+       <img src="./IMG/banner_long_new.jpg" alt="Pulpit Rock" style="width:120px;height:200px"><br>
+        <p>70 % Off</p>   
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="moustiers-sainte-marie.jpg" class="thumbnail">
+        <img src="./IMG/banner_long_new2.jpg" alt="Moustiers Sainte Marie" style="width:120px;height:200px">
+        <br>
+        <p>70% Off</p>
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="cinqueterre.jpg" class="thumbnail">
+       <img src="./IMG/urban-style-combo-of-2-double-bed-sheets-usbc09.jpg" alt="Cinque Terre" style="width:120px;height:200px"><br>
+        <p>20% Off</p>     
+      </a>
+    </div>
+    <div class="col-md-3">
+      <a href="cinqueterre.jpg" class="thumbnail">
+       <img src="./IMG/d-vogue-combo-of-men-t-shirt-shoes-and-bagpack-combo-3.jpg" alt="Cinque Terre" style="width:120px;height:200px"><br>
+        <p>Rs 749 20% Off</p>      
+      </a>
+    </div>
+  </div>
+</div>
+ 
+<div>
+
+<div>
+<div class="container text-center navbar" style = "background-color:#333;">
+    <hr/>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked nav-custom2" >
+          <li><a href="#" class=nav-custom2>Home</a></li>
+          <li><a href="#" class=nav-custom2>About Us</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="#" class=nav-custom2>Contact us</a></li>
+          <li><a href="#" class=nav-custom2>Login</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="#" class=nav-custom2>Complaints</a></li>
+          <li><a href="#" class=nav-custom2>My Account</a></li>          
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="#" class=nav-custom2>Orders</a></li>
+          <li><a href="#" class=nav-custom2>Your Cart</a></li>
+        </ul>
+      </div>  
+    </div>
+  </div>
+  <hr>
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="nav nav-pills nav-justified">
+                <li><a href="/" class=nav-custom2>@ shopaholics.com</a></li>
+                <li><a href="#" class=nav-custom2>Terms of Service</a></li>
+                <li><a href="#" class=nav-custom2>Privacy</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
 </body>
 </html>

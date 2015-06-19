@@ -20,7 +20,7 @@ public class ContactDAO {
 	}
 	public int addContact(ContactBean cbean)throws SQLException{
 		int result;
-		int id = cbean.getSeller_id();
+		//int id = cbean.getSeller_id();
 		String name = cbean.getSellar_name();
 		String city = cbean.getCity();
 		String phone = cbean.getPhone();
@@ -28,9 +28,10 @@ public class ContactDAO {
 		String password = cbean.getPassword();
 		String company = cbean.getCompany();
 		int zipcode = cbean.getZipcode();
-		String query = "insert into seller values('"+id+"','"+name+"','"+password+"','"+company+"','"+city+"', '"+state+"','"+phone+"','"+zipcode+"')";
+		String query = "insert into seller(seller_name, password, company, city, state, phone, zipcode) values('"+name+"','"+password+"','"+company+"','"+city+"', '"+state+"','"+phone+"','"+zipcode+"')";
 		st = conn.createStatement();
 		result = st.executeUpdate(query);
+		
 		return result;
 	}
 }

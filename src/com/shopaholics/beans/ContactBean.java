@@ -1,7 +1,7 @@
 package com.shopaholics.beans;
 
 public class ContactBean {
-	int seller_id;
+	//int seller_id;
 	String sellar_name;
 	String password;
 	String city;
@@ -9,12 +9,12 @@ public class ContactBean {
 	String state;
 	String phone;
 	int zipcode;
-	public int getSeller_id() {
+	/*public int getSeller_id() {
 		return seller_id;
 	}
 	public void setSeller_id(int seller_id) {
 		this.seller_id = seller_id;
-	}
+	}*/
 	public String getSellar_name() {
 		return sellar_name;
 	}
@@ -58,10 +58,10 @@ public class ContactBean {
 	public void setZipcode(int zipcode) {
 		this.zipcode = zipcode;
 	}
-	public ContactBean(int seller_id, String sellar_name, String password, String company,
+	public ContactBean(String sellar_name, String password, String company,
 			String city, String state, String phone, int zipcode2) {
 		super();
-		this.seller_id = seller_id;
+		//this.seller_id = seller_id;
 		this.sellar_name = sellar_name;
 		this.password = password;
 		this.company = company;
@@ -71,7 +71,7 @@ public class ContactBean {
 		this.zipcode = zipcode2;
 	}
 	public ContactBean() {
-		this.seller_id = getSeller_id();
+		//this.seller_id = getSeller_id();
 		this.sellar_name = getSellar_name();
 		this.password = getPassword();
 		this.city = getCity();

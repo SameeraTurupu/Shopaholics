@@ -1,37 +1,34 @@
 package com.shopaholics.beans;
 
 public class ProductBean {
-	String prod_id;
-	String Prod_name;
-	String description;
+	String pid;
 	int stock;
 	int price;
+	String pname;
+	String description;
+	String sid;
 	int offers;
-	public ProductBean(String prod_id, String prod_name, String description,
+	public ProductBean(String pid, String pname, String description,
 			int stock, int price, int offers) {
 		super();
-		this.prod_id = prod_id;
-		Prod_name = prod_name;
+		this.pid = pid;
+		this.pname = pname;
 		this.description = description;
 		this.stock = stock;
 		this.price = price;
 		this.offers = offers;
 	}
-	public ProductBean() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	public String getProd_id() {
-		return prod_id;
+		return pid;
 	}
-	public void setProd_id(String prod_id) {
-		this.prod_id = prod_id;
+	public void setProd_id(String pid) {
+		this.pid = pid;
 	}
 	public String getProd_name() {
-		return Prod_name;
+		return pname;
 	}
-	public void setProd_name(String prod_name) {
-		Prod_name = prod_name;
+	public void setProd_name(String pname) {
+		this.pname = pname;
 	}
 	public String getDescription() {
 		return description;
@@ -57,5 +54,4 @@ public class ProductBean {
 	public void setOffers(int offers) {
 		this.offers = offers;
 	}
-	
 }

@@ -30,7 +30,7 @@ public class SellerController extends HttpServlet {
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			//read user and password	
-			int id = 3;
+		
 			String name = request.getParameter("user");
 			String password = request.getParameter("password");
 			String company = request.getParameter("company");
@@ -40,7 +40,7 @@ public class SellerController extends HttpServlet {
 			int zipcode = Integer.parseInt(request.getParameter("pincode"));
 			
 			//creating UserBean object with parameterized constructor
-			ContactBean cBean = new ContactBean(id, name, password,company, city, state, phone, zipcode);
+			ContactBean cBean = new ContactBean(name, password,company, city, state, phone, zipcode);
 			//creating ContactDAO object
 			ContactDAO ud = new ContactDAO();
 			//calling createUser() method
@@ -51,6 +51,7 @@ public class SellerController extends HttpServlet {
 				HttpSession hs = request.getSession();
 				//add name as session attribute
 				hs.setAttribute("sunm", name);
+				//hs.setAttribute("phone", phone);
 				response.sendRedirect("LSeller.jsp?msg=succesfully registered! u can login now");									
 				
 			}

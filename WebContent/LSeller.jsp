@@ -19,7 +19,7 @@
     <script src = "Bootstrap/js/bootstrap.js"></script>
     <script src = "Bootstrap/js/bootstrap.min.js"></script>
     <script src = "Bootstrap/js/bootstrap.npm.js"></script>
-<title></title>
+<title>Shopaholics</title>
 </head>
 <body>
 <% RequestDispatcher dispatcher = request.getRequestDispatcher("header2.jsp");

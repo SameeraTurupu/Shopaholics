@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%HttpSession hs = request.getSession();
+    String name = (String)hs.getAttribute("sunm");
+    System.out.print(name);%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,7 +23,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<title>Shopaholics</title>
 </head>
 <body>
 <% RequestDispatcher dispatcher = request.getRequestDispatcher("header3.jsp");
@@ -32,7 +35,25 @@
  <table>
  <tr><td>Product ID</td><td><input type = "text" name = "productid"/></td></tr>
  <tr><td>Product Name</td><td><input type = "text" name = "productname"/></td></tr>
- <tr><td>Price</td><td><input type = "text" name = "price"/></td></tr>
+
+        <tr>
+          <td>Primary Category</td>
+            <td>
+              <label for="Points"></label>
+              <select name="points" size="1" id="points">
+                <option >Select a category</option>
+                <option>Clothing and accessories</option>
+                <option>Electronics</option>
+                <option>Home and kitchen</option>
+                <option>Health</option>
+                <option>Sports</option>
+                <option>Entertainment</option>
+                <option>kids</option>
+                <option>Shoes</option>
+              </select>
+              <br/>
+            </td></tr>
+       <tr><td>Price</td><td><input type = "text" name = "price"/></td></tr>
  <tr><td>Description</td><td><input type = "text" name = "description"/></td></tr>
  <tr><td>Image</td><td><input type = "file" name = "photo"/></td></tr>
  <tr><td>Offers</td><td><input type = "text" name = "offers"/></td></tr>
