@@ -112,7 +112,7 @@
       </a>
     </div>
     <div class="col-md-3">
-      <a href="cinqueterre.jpg" class="thumbnail">
+      <a href="sonyXperia.jsp" class="thumbnail">
        <img src="./IMG/B4989275.jpg" alt="Cinque Terre" style="width:120px;height:200px"><br>
         <p>Sony Xperia C4 Dual SIM White</p>
         <p>Rs 28999</p>      

@@ -17,7 +17,7 @@
 	<script src = "Bootstrap/js/bootstrap.min.js"></script>
 	<script src = "Bootstrap/js/bootstrap.npm.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Shopaholics</title>
 </head>
 <body>
 	<div class="container-fluid">
@@ -33,7 +33,9 @@ if(unm != null)
    out.print("hi, "+unm);
 }
 %></a></li>
-        		<li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+        		<li><a href="login.jsp">Login</a></li>
+<span class="glyphicon glyphicon-shopping-cart"><% HttpSession hs = request.getSession();   
+			      out.print(hs.getAttribute("cartno"));%></span></a></li>
        			<li><a href="home.jsp">Sign Out</a></li>
        			
      			</ul>

@@ -32,18 +32,18 @@
   <div class="form-group">
     <label class="control-label col-sm-4"><b>User:</b></label><br>
     <div class="col-sm-4">
-      <input type="text" name = "user" class="form-control" placeholder="Enter username">
+      <input type="text" name = "user" class="form-control" placeholder="Enter username" required>
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-4" for="pwd"><b>Password:</b></label><br>
     <div class="col-sm-4">
-      <input type="password" class="form-control" name = "password" placeholder="Enter password">
+      <input type="password" class="form-control" name = "password" placeholder="Enter password" required>
     </div>
   </div>
   <div class="form-group">
     <div class="col-sm-offset-5 col-sm-5">
-      <button type="submit" class="btn btn-default"><b>Signup</b></button>
+      <button type="submit" class="btn btn-inverse"><b>Signup</b></button>
     </div>
   </div>
 </form>

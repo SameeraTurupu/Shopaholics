@@ -63,43 +63,43 @@
   <div class="form-group">
     <label class="control-label col-sm-4"><b>User</b></label><br>
     <div class="col-sm-4">
-      <input type="text" name = "user" class="form-control" placeholder="Enter username">
+      <input type="text" name = "user" class="form-control" placeholder="Enter username" required>
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-4" for="pwd"><b>Password:</b></label><br>
     <div class="col-sm-4">
-      <input type="password" class="form-control" name = "password" placeholder="Enter password">
+      <input type="password" class="form-control" name = "password" placeholder="Enter password" required>
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-4" for="pwd"><b>Company</b></label><br>
     <div class="col-sm-4">
-      <input type="text" class="form-control" name = "company" placeholder="Enter Company">
+      <input type="text" class="form-control" name = "company" placeholder="Enter Company" required>
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-4" for="pwd"><b>City</b></label><br>
     <div class="col-sm-4">
-      <input type="text" class="form-control" name = "city" placeholder="Enter City">
+      <input type="text" class="form-control" name = "city" placeholder="Enter City" required>
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-4" for="pwd"><b>State</b></label><br>
     <div class="col-sm-4">
-      <input type="text" class="form-control" name = "State" placeholder="Enter State">
+      <input type="text" class="form-control" name = "State" placeholder="Enter State" required>
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-4" for="pwd"><b>Phone</b></label><br>
     <div class="col-sm-4">
-      <input type="phone" class="form-control" name = "phone" placeholder="Enter Phone number">
+      <input type="phone" class="form-control" name = "phone" placeholder="Enter Phone number" required>
     </div>
   </div>
   <div class="form-group">
     <label class="control-label col-sm-4" for="pwd"><b>Pincode</b></label><br>
     <div class="col-sm-4">
-      <input type="text" class="form-control" name = "pincode" placeholder="Enter pincode">
+      <input type="text" class="form-control" name = "pincode" placeholder="Enter pincode" required>
     </div>
   </div>
   <div class="form-group">

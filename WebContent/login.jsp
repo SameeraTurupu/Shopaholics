@@ -10,6 +10,8 @@
    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link href="Bootstrap/css/nav-custom2.css" rel="stylesheet"/>
     <script src = "Bootstrap/js/bootstrap.js"></script>
     <script src = "Bootstrap/js/bootstrap.min.js"></script>
@@ -43,7 +45,7 @@
   </div>
   <div class="form-group">
     <div class="col-sm-offset-5 col-sm-5">
-      <button type="submit" class="btn btn-default btn-lg">Login</button>
+      <button type="submit" class="btn btn-inverse btn-lg">Login</button>
     </div>
   </div>
 </form>

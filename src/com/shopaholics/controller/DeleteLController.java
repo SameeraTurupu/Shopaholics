@@ -27,10 +27,10 @@ public class DeleteLController extends HttpServlet {
 			//ContactBean cbean = new ContactBean(id, name, email, phone, nm);
 			int result= codao.deleteProduct(id);
 			if(result >= 1){
-			response.sendRedirect("productslist.jsp?message=Record Deleted");
+			response.sendRedirect("productslist.jsp?message=Product Deleted");
 			}
 			else{
-				response.sendRedirect("productslist.jsp?message= Record not deleted");
+				response.sendRedirect("productslist.jsp?message= Product not deleted");
 			}
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

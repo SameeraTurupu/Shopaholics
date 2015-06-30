@@ -31,20 +31,20 @@
       </div>
       <div class="col-md-3">
         <ul class="nav nav-pills nav-stacked">
-          <li><a href="#" class=nav-custom2>Contact us</a></li>
-          <li><a href="#" class=nav-custom2>Login</a></li>
+          <li><a href="contactUs.jsp" class=nav-custom2>Contact us</a></li>
+          <li><a href="login.jsp" class=nav-custom2>Login</a></li>
         </ul>
       </div>
       <div class="col-md-3">
         <ul class="nav nav-pills nav-stacked">
-          <li><a href="#" class=nav-custom2>Complaints</a></li>
+          <li><a href="complaints.jsp" class=nav-custom2>Complaints</a></li>
           <li><a href="#" class=nav-custom2>My Account</a></li>          
         </ul>
       </div>
       <div class="col-md-3">
         <ul class="nav nav-pills nav-stacked">
           <li><a href="#" class=nav-custom2>Orders</a></li>
-          <li><a href="#" class=nav-custom2>Your Cart</a></li>
+          <li><a href="itemslist.jsp" class=nav-custom2>Your Cart</a></li>
         </ul>
       </div>  
     </div>

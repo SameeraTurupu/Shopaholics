@@ -58,7 +58,7 @@ public class UploadController extends HttpServlet {
         	selected = request.getParameter("points");
         	 System.out.println("in if"+selected);
         }*/
-        selected = request.getParameter("points");
+        selected = request.getParameter("category");
                System.out.println("selected"+selected);
         String img_id = request.getParameter("productid");
       //  System.out.println("after");

@@ -24,6 +24,12 @@
 		<![endif]-->
 </head>
 <body>
+<% RequestDispatcher dispatcher = request.getRequestDispatcher("header3.jsp");
+        dispatcher.include(request, response );
+%>
+<% RequestDispatcher dispatcher1 = request.getRequestDispatcher("Header.jsp");
+        dispatcher1.include(request, response );
+%>
 <section class="header_text sub">
 			<img class="pageBanner" src="themes/images/pageBanner.png" alt="New products" >
 				<h4><span>New products</span></h4>

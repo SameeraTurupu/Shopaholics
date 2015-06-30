@@ -17,7 +17,7 @@
 	<script src = "Bootstrap/js/bootstrap.min.js"></script>
 	<script src = "Bootstrap/js/bootstrap.npm.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Shopaholics</title>
 </head>
 <body>
 <div class="container-fluid">
@@ -25,7 +25,9 @@
     		<div class="col-sm-6"><img src =./IMG/slogo5.png></div>
     		<div class="col-sm-6"><span class="pull-right"></span><br>
       			<ul class="nav navbar-nav navbar-custom">
-        		<li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+        		<li><a href="login.jsp"><span class="glyphicon glyphicon-shopping-cart">
+        		<% HttpSession hs = request.getSession();   
+			      out.print(hs.getAttribute("cartno"));%> </span></a></li>
         		<li><a href="login.jsp">Login</a></li>
        			<li><a href="signup.jsp">SignUp</a></li>
        			<li class="active"><a href="LSeller.jsp">seller</a></li>

@@ -32,6 +32,10 @@ public class CartListDelController extends HttpServlet {
 			//calling delete() method
 			int result = ud.deletecart(id,usrname);
 			//calling addContact() method
+			HttpSession hs1 = request.getSession();   
+		    int cart = (Integer)hs1.getAttribute("cartno");
+		    int cartno = cart - 1;
+		    hs.setAttribute("cartno", cartno);
 				response.sendRedirect("itemslist.jsp?uid=" + result);}
 			catch (ClassNotFoundException e) {
 	            // TODO Auto-generated catch block

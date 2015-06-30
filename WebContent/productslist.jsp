@@ -23,15 +23,32 @@
  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet">      
+	<link href="Bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="Bootstrap/css/bootstrap-theme.min.css.map" rel="stylesheet">
+	<link href="Bootstrap/css/bootstrap.css" rel="stylesheet"/>
+	<link href="Bootstrap/css/navbar-custom.css" rel="stylesheet"/>
+	<link href="Bootstrap/css/sample.css" rel="stylesheet"/>
+	<script src = "Bootstrap/js/jquery.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<link href="Bootstrap/css/nav-custom2.css" rel="stylesheet"/>
+	<script src = "Bootstrap/js/bootstrap.js"></script>
+	<script src = "Bootstrap/js/bootstrap.min.js"></script>
+	<script src = "Bootstrap/js/bootstrap.npm.js"></script>
+	
+	<link href="Bootstrap/css/nav-custom2.css" rel="stylesheet"/>
 <title>Insert title here</title>
 </head>
 <body>
 <% RequestDispatcher dispatcher = request.getRequestDispatcher("header3.jsp");
         dispatcher.include(request, response );
-%>
+%><br><br>
 
 Add a product <a href ="seller.jsp?username=" +name><span class="glyphicon glyphicon-plus"></span></a>
-<table border="1">
+<table class = "table table-hover" border="0">
 <tr>
 <td>PROD_ID</td>
 <td>NAME</td>

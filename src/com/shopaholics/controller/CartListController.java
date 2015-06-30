@@ -37,7 +37,11 @@ public class CartListController extends HttpServlet {
 			ProductDAO ud = new ProductDAO();
 			ProductBean cbean = new ProductBean(id,product_name,desc,quantity, price, offer);
 			int result = ud.addtocart(cbean,usrname);
-				response.sendRedirect("itemslist.jsp?uid=" + result);
+			HttpSession hs1 = request.getSession();   
+		    int cart = (Integer)hs1.getAttribute("cartno");
+		    int cartno = cart + 1;
+		    hs.setAttribute("cartno", cartno);
+			response.sendRedirect("itemslist.jsp?uid=" + result);
 			}
 			catch (SQLException e) {
 				// TODO: handle exception
