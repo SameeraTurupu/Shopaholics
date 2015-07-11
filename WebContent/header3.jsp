@@ -25,18 +25,18 @@
     		<div class="col-sm-6"><img src =./IMG/slogo5.png></div>
     		<div class="col-sm-6"><span class="pull-right"></span><br>
       			<ul class="nav navbar-nav navbar-custom">
-        		<li class="active"><a href="#">
-<%
+        		<li class="active"><a href="Myaccount.jsp"><%
 String unm = request.getParameter("username");
 if(unm != null)
 {
    out.print("hi, "+unm);
 }
 %></a></li>
-        		<li><a href="login.jsp">Login</a></li>
-<span class="glyphicon glyphicon-shopping-cart"><% HttpSession hs = request.getSession();   
-			      out.print(hs.getAttribute("cartno"));%></span></a></li>
-       			<li><a href="home.jsp">Sign Out</a></li>
+<li><a href="itemslist.jsp"><span class="glyphicon glyphicon-shopping-cart">
+<% HttpSession hs = request.getSession();   
+int cartno = (Integer)hs.getAttribute("cartno");
+			      out.print(cartno);%></span></a></li>
+<li><a href="logout">Sign Out</a></li>
        			
      			</ul>
     		</div>

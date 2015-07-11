@@ -26,7 +26,7 @@ public class CartListController extends HttpServlet {
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try{
 			HttpSession hs = request.getSession();
-			String usrname = (String)hs.getAttribute("sunm");
+			String email = (String)hs.getAttribute("email");
 			String id = request.getParameter("id");
 			String product_name = request.getParameter("nm");
 			String stock = request.getParameter("stock");
@@ -36,12 +36,14 @@ public class CartListController extends HttpServlet {
 			String desc = request.getParameter("desc");
 			ProductDAO ud = new ProductDAO();
 			ProductBean cbean = new ProductBean(id,product_name,desc,quantity, price, offer);
-			int result = ud.addtocart(cbean,usrname);
+			HttpSession hs2 = request.getSession();
+			hs2.setAttribute("uid",ud.addtocart(cbean,email));
+			//result = ud.addtocart(cbean,usrname);
 			HttpSession hs1 = request.getSession();   
 		    int cart = (Integer)hs1.getAttribute("cartno");
 		    int cartno = cart + 1;
 		    hs.setAttribute("cartno", cartno);
-			response.sendRedirect("itemslist.jsp?uid=" + result);
+			response.sendRedirect("itemslist.jsp");
 			}
 			catch (SQLException e) {
 				// TODO: handle exception

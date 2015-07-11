@@ -47,7 +47,7 @@
         dispatcher.include(request, response );
 %><br><br>
 
-Add a product <a href ="seller.jsp?username=" +name><span class="glyphicon glyphicon-plus"></span></a>
+<h2>Add a product</h2><a href ="seller.jsp?username=" +name><span class="glyphicon glyphicon-plus"></span></a>
 <table class = "table table-hover" border="0">
 <tr>
 <td>PROD_ID</td>
@@ -75,9 +75,49 @@ Add a product <a href ="seller.jsp?username=" +name><span class="glyphicon glyph
 	 out.print("</tr>");
  }
  %>
-</table>
-<% RequestDispatcher dispatcher2 = request.getRequestDispatcher("footer.jsp");
-        dispatcher2.include(request, response );
-%>
+</table><br><br>
+<div>
+<div class="container text-center navbar" style = "background-color:#333;">
+    <hr/>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked nav-custom2" >
+          <li><a href="#" class=nav-custom2>Home</a></li>
+          <li><a href="#" class=nav-custom2>About Us</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="#" class=nav-custom2>Contact us</a></li>
+          <li><a href="#" class=nav-custom2>Login</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="#" class=nav-custom2>Complaints</a></li>
+          <li><a href="#" class=nav-custom2>My Account</a></li>          
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="#" class=nav-custom2>Orders</a></li>
+          <li><a href="#" class=nav-custom2>Your Cart</a></li>
+        </ul>
+      </div>  
+    </div>
+  </div>
+  <hr>
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="nav nav-pills nav-justified">
+                <li><a href="/" class=nav-custom2>@ shopaholics.com</a></li>
+                <li><a href="#" class=nav-custom2>Terms of Service</a></li>
+                <li><a href="#" class=nav-custom2>Privacy</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
 </body>
 </html>

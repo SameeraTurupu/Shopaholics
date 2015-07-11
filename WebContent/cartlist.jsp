@@ -40,6 +40,35 @@
    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
    <script src="https://code.jquery.com/jquery.min.js"></script>
    <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+   <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">   
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+<script type="text/javascript" 
+src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" 
+src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+   <!--  <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="js/jquery.tablesorter.min.js"></script> 
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<link rel="stylesheet" 
+href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+<script type="text/javascript" 
+src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script> -->
+   
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">   
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<link rel="stylesheet" 
+href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+<script type="text/javascript" 
+src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" 
+src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<script>
+$(document).ready(function(){
+    $('#myTable').dataTable();
+});
+</script>   
    <script>$(document).ready(function () {
 		(function($) {
 			$('#filter').keyup(function () {
@@ -50,9 +79,46 @@
 				}).show();
 			})
 		}(jQuery));
-	});</script>
+	});
+   </script>	
+    <!-- <script>$(function() {
+
+	   $("table").searchable({ theme : 'blue' });
+
+	   $("#ajax-append").click(function() {
+
+	     $.get("assets/ajax-content.html", function(html) {
+
+	       // append the "ajax'd" data to the table body
+	       $("table tbody").append(html);
+
+	       // let the plugin know that we made a update
+	       // the resort flag set to anything BUT false (no quotes) will trigger an automatic
+	       // table resort using the current sort
+	       var resort = true;
+	       $("table").trigger("update", [resort]);
+
+	       // triggering the "update" function will resort the table using the current sort; since version 2.0.14
+	       // use the following code to change the sort; set sorting column and direction, this will sort on the first and third column
+	       // var sorting = [[2,1],[0,0]];
+	       // $("table").trigger("sorton", [sorting]);
+	     });
+
+	     return false;
+	   });
+
+	 }); 
+	 </script>-->
+
+
 <title>Shopaholics</title>
 </head>
+<style>
+body{
+    margin-left: 80px;
+    margin-right: 80px;
+}
+</style>
 <body>
 <% RequestDispatcher dispatcher = request.getRequestDispatcher("header3.jsp");
         dispatcher.include(request, response );
@@ -65,8 +131,9 @@
 <h2 class = "list">List Of Products</h2>
 <div class = "input-group"> <span class="input-group-addon">Filter</span>
 <input id = "filter" type="text" class = "form-control" placeholder="Type here">
-</div>
-<table class = "table table-hover" border="0">
+</div><br><br>
+<div class="table-responsive">
+<table  id = "myTable" class = "table table-hover" border="0">
 <thead>
 <tr>
 <td>Product ID</td>
@@ -102,6 +169,7 @@
 	}
 	%>
 </table>
+</div>
 </form>
 </div><br><br><br><br><br><br><br><br><br><br><br>
 <div>

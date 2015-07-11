@@ -45,10 +45,10 @@ public class UpdateLController extends HttpServlet {
 			ProductBean cbean = new ProductBean(id, name,desc,stock,price,offer);
 			int result = codao.updateContact(cbean);
 			if (result >= 1){
-				response.sendRedirect("productslist.jsp?message=Record Updated");
+				response.sendRedirect("productslist.jsp?message=Product Updated");
 			}
 			else{
-				response.sendRedirect("productslist.jsp?message=Record not updated");
+				response.sendRedirect("productslist.jsp?message=Product not updated");
 			}
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

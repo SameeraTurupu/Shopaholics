@@ -28,7 +28,7 @@ public class LogoutController extends HttpServlet {
 		// TODO Auto-generated method stub
 		HttpSession hs = request.getSession();
 		hs.invalidate();
-		response.sendRedirect("home.jsp");
+		response.sendRedirect("cartsession.jsp");
 	}
 
 

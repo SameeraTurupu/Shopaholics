@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.shopaholics.beans.UserBean;
+import com.shopaholics.beans.UserSignupBean;
 import com.shopaholics.dao.UserDAO;
 
 
@@ -32,9 +33,17 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		try {
 		//read user and password	
 		String name = request.getParameter("user");
+		String Lastname = request.getParameter("lastname");
+		String email = request.getParameter("email");
 		String pwd = request.getParameter("password");
+		String address = request.getParameter("address");
+		String city = request.getParameter("city");
+		String state = request.getParameter("state");
+		String phone = request.getParameter("phone");
+		int zipcode = Integer.parseInt(request.getParameter("zipcode"));
+		
 		//creating UserBean object with parameterized constructor
-		UserBean uBean = new UserBean(name, pwd);
+		UserSignupBean uBean = new UserSignupBean(name,Lastname,email,pwd,address,city,state,phone,zipcode);
 		//creating ContactDAO object
 		UserDAO ud = new UserDAO();
 		//calling createUser() method

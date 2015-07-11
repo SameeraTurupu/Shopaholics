@@ -11,7 +11,7 @@ public class SellerDAO {
 	Connection conn;
 	  PreparedStatement st;
 	  ConnectionDAO cd;
-	  public SellerDAO() throws ClassNotFoundException{
+	  public SellerDAO() throws ClassNotFoundException, SQLException{
 		  cd = new ConnectionDAO(); 
 		  conn = cd.getConnection();
 	  }

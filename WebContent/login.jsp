@@ -32,9 +32,10 @@
  <form class="form-horizontal" action ="LoginController">
  <h1 align = "center"><b></b></h1>
   <div class="form-group">  
-    <label class="control-label col-sm-4"><b>User Name:</b></label>
+    <label class="control-label col-sm-4"><b>E-mail:</b></label>
     <div class="col-sm-4">
-      <input type="text" name = "user" class="form-control" placeholder="Enter username" required>
+    <span class="glyphicon glyphicon-envelope">
+      <input type="email" name = "user" class="form-control" placeholder="Enter Email" required></span>
     </div>
   </div>
   <div class="form-group">

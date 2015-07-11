@@ -62,6 +62,6 @@
        	</ul>
     	</div>
     </div>
-   </nav><br>
+   </nav>
 </body>
 </html>

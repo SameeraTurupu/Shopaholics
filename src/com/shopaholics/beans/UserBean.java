@@ -3,13 +3,15 @@ package com.shopaholics.beans;
 public class UserBean {
     String user;
     String password;
-    public UserBean() {
-		super();
-	}
+    
 	public UserBean(String user, String password) {
 		super();
 		this.user = user;
 		this.password = password;
+	}
+	public UserBean() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	public String getUser() {
    	

@@ -14,7 +14,7 @@ public class ContactDAO {
 	Connection conn = null;
 	Statement st = null;
 	PreparedStatement st1 =null;
-	public ContactDAO()throws ClassNotFoundException{
+	public ContactDAO()throws ClassNotFoundException, SQLException{
 		cdao = new ConnectionDAO();
 		conn = cdao.getConnection();
 	}

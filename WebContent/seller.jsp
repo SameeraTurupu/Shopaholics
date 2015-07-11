@@ -120,7 +120,7 @@ $(document).ready(function(){
     </tr>
        <tr><td>Price</td><td><input type = "text" name = "price" required/></td></tr>
  <tr><td>Description</td><td><input type = "text" name = "description" required/></td></tr>
- <tr><td>Image</td><td><input type = "file" name = "photo" required/></td></tr>
+ <tr><td>Image</td><td><input type = "file" name ="file" required/></td></tr>
  <tr><td>Offers</td><td><input type = "text" name = "offers" required/></td></tr>
  
  <tr><td>Stock</td><td><input type = "text" name = "stock" required/></td></tr>
@@ -131,8 +131,47 @@ $(document).ready(function(){
 </div>
 &nbsp; &nbsp; &nbsp;<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <div>
-<% RequestDispatcher dispatcher2 = request.getRequestDispatcher("footer.jsp");
-        dispatcher2.include(request, response );
-%>
+<div class="container text-center navbar" style = "background-color:#333;">
+    <hr/>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked nav-custom2" >
+          <li><a href="#" class=nav-custom2>Home</a></li>
+          <li><a href="#" class=nav-custom2>About Us</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="#" class=nav-custom2>Contact us</a></li>
+          <li><a href="#" class=nav-custom2>Login</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="#" class=nav-custom2>Complaints</a></li>
+          <li><a href="#" class=nav-custom2>My Account</a></li>          
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul class="nav nav-pills nav-stacked">
+          <li><a href="#" class=nav-custom2>Orders</a></li>
+          <li><a href="#" class=nav-custom2>Your Cart</a></li>
+        </ul>
+      </div>  
+    </div>
+  </div>
+  <hr>
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="nav nav-pills nav-justified">
+                <li><a href="/" class=nav-custom2>@ shopaholics.com</a></li>
+                <li><a href="#" class=nav-custom2>Terms of Service</a></li>
+                <li><a href="#" class=nav-custom2>Privacy</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
 </body>
 </html>

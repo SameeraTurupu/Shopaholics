@@ -33,7 +33,9 @@
      <%@ page import = "java.util.*"%>
 <%
 ProductDAO cont = new ProductDAO();
-int uid = Integer.parseInt(request.getParameter("uid"));
+
+HttpSession hs1 = request.getSession();   
+int uid = (Integer)hs1.getAttribute("uid");
 List<CartsBean> lst = cont.cartdisp(uid);
 ListIterator<CartsBean> lt = lst.listIterator();
 %>

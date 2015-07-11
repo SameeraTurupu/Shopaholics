@@ -26,8 +26,9 @@
     		<div class="col-sm-6"><span class="pull-right"></span><br>
       			<ul class="nav navbar-nav navbar-custom">
         		<li><a href="login.jsp"><span class="glyphicon glyphicon-shopping-cart">
-        		<% HttpSession hs = request.getSession();   
-			      out.print(hs.getAttribute("cartno"));%> </span></a></li>
+        		<% HttpSession hs = request.getSession();
+        		  int cartno = (Integer)hs.getAttribute("cartno");
+			      out.print(cartno);%> </span></a></li>
         		<li><a href="login.jsp">Login</a></li>
        			<li><a href="signup.jsp">SignUp</a></li>
        			<li class="active"><a href="LSeller.jsp">seller</a></li>

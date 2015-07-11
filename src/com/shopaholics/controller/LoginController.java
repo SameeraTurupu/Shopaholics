@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.shopaholics.beans.UserBean;
 import com.shopaholics.dao.UserDAO;
+
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -31,7 +32,7 @@ public class LoginController extends HttpServlet {
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	 try {
 		//read user and password		
-		String name = request.getParameter("user");
+		String email = request.getParameter("user");
 		String pwd = request.getParameter("password");
 		
 		/*//create object of BussinessUtility class
@@ -42,26 +43,34 @@ public class LoginController extends HttpServlet {
 		//redirecting control to welcome or login*/
 		
 		//creating ContactBean object with parameterized constructor
-		UserBean uBean = new UserBean(name, pwd);
+		UserBean uBean = new UserBean(email, pwd);
 		UserDAO ud = new UserDAO();
+		HttpSession hs = request.getSession();
 		boolean result = ud.validateUser(uBean);
 		if(result)
 		{
 			//get http Session reference
-			HttpSession hs = request.getSession();
+			hs.setAttribute("email", email);
+			String email1 = (String) hs.getAttribute("email");
+		    String name = ud.getUserName(email1);
+		    hs.setAttribute("sunm",name);
+		    int id = ud.getUserId(email1); 
+		    hs.setAttribute("uid",id);
+		    
+			
 			//add name as session attribute
-			hs.setAttribute("sunm", name);
+			
 			response.sendRedirect("LHome.jsp?username=" + name);									
 			
 		}
 		else
 		{
-			response.sendRedirect("login.jsp?username="+name);
+			response.sendRedirect("login.jsp?");
 			
 		}
 		ShopaholicsLog log = new ShopaholicsLog();
 		
-		log.write(name);
+		log.write(email);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
