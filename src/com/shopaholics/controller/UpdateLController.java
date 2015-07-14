@@ -3,6 +3,7 @@ package com.shopaholics.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -39,18 +40,19 @@ public class UpdateLController extends HttpServlet {
 		int offer = Integer.parseInt(request.getParameter("offer"));
 		HttpSession hs = request.getSession();
 		String nm = (String)hs.getAttribute("sunm");
+		String image = request.getParameter("file");
 		//String user = request.getParameter("nm");
 		try {
 			ProductDAO codao = new ProductDAO();
-			ProductBean cbean = new ProductBean(id, name,desc,stock,price,offer);
+			ProductBean cbean = new ProductBean(id, name,desc,stock,price,offer,image);
 			int result = codao.updateContact(cbean);
 			if (result >= 1){
-				response.sendRedirect("productslist.jsp?message=Product Updated");
+				response.sendRedirect("productslist.jsp?message=Record Updated");
 			}
 			else{
-				response.sendRedirect("productslist.jsp?message=Product not updated");
+				response.sendRedirect("productslist.jsp?message=Record not updated");
 			}
-		} catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException | NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
