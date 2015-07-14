@@ -20,22 +20,22 @@
     <div class="col-md-4">
       <a href="#" class="thumbnail">
        <img src="./IMG/Sabhitha.jpg" alt="Pulpit Rock" style="width:200px;height:200px"><br>
-        <p>Nokia Lumia 830 Orange</p>
-        <p>Rs 20700</p>    
+        <p>Sabhitha Vangaveti</p>
+        <p></p>    
       </a>
     </div>
     <div class="col-md-4">
       <a href="#" class="thumbnail">
         <img src="./IMG/Neelima.jpg" alt="Moustiers Sainte Marie" style="width:200px;height:200px">
         <br>
-        <p>Sony Xperia C4 Dual SIM Black</p>
+        <p>Neelima Datla</p>
         <p>Rs 25499</p>
       </a>
     </div>
     <div class="col-md-4">
       <a href="#" class="thumbnail">
-       <img src="./IMG/B3658853.jpg" alt="Cinque Terre" style="width:200px;height:200px"><br>
-        <p>Nokia Lumia 930 Green</p>
+       <img src="./IMG/Sameera.JPG" alt="Cinque Terre" style="width:200px;height:200px"><br>
+        <p>Sameera Turupu</p>
         <p>Rs 37391</p>      
       </a>
     </div>
