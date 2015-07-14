@@ -43,6 +43,15 @@
    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">   
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+<script  type="text/javascript" src="../js/typeahead.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js"></script>
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">   
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+<script type="text/javascript" 
+src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" 
+src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" 
 src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" 
@@ -54,7 +63,8 @@ src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></scrip
 href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
 <script type="text/javascript" 
 src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script> -->
-   
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">   
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <link rel="stylesheet" 
@@ -63,13 +73,16 @@ href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
 src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" 
 src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<link rel="stylesheet" 
+href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css"></style>
+<script type="text/javascript" 
+src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" 
+src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script>
-$(document).ready(function(){
-    $('#myTable').dataTable();
-});
 </script>   
-   <script>$(document).ready(function () {
+   <script>/* $(document).ready(function () {
 		(function($) {
 			$('#filter').keyup(function () {
 				var rex = new RegExp($(this).val(), 'i');
@@ -79,7 +92,11 @@ $(document).ready(function(){
 				}).show();
 			})
 		}(jQuery));
+	}); */
+   $(document).ready(function(){
+	    $('#myTable').dataTable();
 	});
+   
    </script>	
     <!-- <script>$(function() {
 
@@ -113,29 +130,36 @@ $(document).ready(function(){
 
 <title>Shopaholics</title>
 </head>
-<style>
-body{
+<style>body{
     margin-left: 80px;
     margin-right: 80px;
-}
-</style>
+}</style>
 <body>
-<% RequestDispatcher dispatcher = request.getRequestDispatcher("header3.jsp");
-        dispatcher.include(request, response );
+<% HttpSession hs1 = request.getSession();   
+String name = (String)hs1.getAttribute("sunm");
+if(name != null) {
+RequestDispatcher dispatcher = request.getRequestDispatcher("header3.jsp");
+        dispatcher.include(request, response);}
+else {
+	RequestDispatcher dispatcher = request.getRequestDispatcher("header2.jsp");
+    dispatcher.include(request, response);
+}
 %>
 <% RequestDispatcher dispatcher1 = request.getRequestDispatcher("Header.jsp");
         dispatcher1.include(request, response );
 %>
 <div class="list">
+<div class="container">
 <form>
-<h2 class = "list">List Of Products</h2>
-<div class = "input-group"> <span class="input-group-addon">Filter</span>
+<center><b><h2 class = "list" style = "color:orange">Featured Products</h2></b></center>
+<!-- <div class = "input-group"> <span class="input-group-addon">Filter</span>
 <input id = "filter" type="text" class = "form-control" placeholder="Type here">
-</div><br><br>
+</div> --><br><br>
 <div class="table-responsive">
 <table  id = "myTable" class = "table table-hover" border="0">
 <thead>
 <tr>
+<td>Image</td>
 <td>Product ID</td>
 <td>Product Name</td>
 <td>Price</td>
@@ -145,16 +169,45 @@ body{
 <td>Add to cart</td>
 </tr>
 </thead>
+<tbody class = "searchable">
 <% while(lt.hasNext()){
 	ProductBean cb = lt.next();
-	out.print("<tbody class = searchable>");
+	//out.print("<tbody>");
 	out.print("<tr>");
+ out.print("<td>");
+     
+	 out.print("<a href=# id=myBtn><img src =" + cb.getImage() + "></a>");
+
+    //out.print(cb.getImage()); 
+    out.print("</td>");
+    out.print("<div class=modal fade id=myModal role=dialog>");
+    out.print("<div class=modal-dialog>");
+    
+      //<!-- Modal content-->
+      out.print("<div class=modal-content>");
+        out.print("<div class=modal-header>");
+          out.print("<button type=button class=close data-dismiss=modal>&times;</button>");
+          out.print("<h4 class=modal-title>"+ cb.getProd_name()+"</h4>");
+        out.print("</div>");
+        out.print("<div class=modal-body>");
+          out.print("<p>"+cb.getDescription()+"</p>");
+         out.print("<img src =" + cb.getImage() + " width=300 height=400>");
+        out.print("</div>");
+        out.print("<div class=modal-footer>");
+          out.print("<button type=button class=btn btn-default data-dismiss=modal>Close</button>");
+        out.print("</div>");
+      out.print("</div>");
+      
+    out.print("</div>");
+  out.print("</div>");
 	out.print("<td>" + cb.getProd_id());
 	out.print("<td>" + cb.getProd_name());
 	out.print("<td>" + cb.getPrice());
 	out.print("<td>" + cb.getStock());
 	out.print("<td>" + cb.getDescription());
+	
 	out.print("<td>" + cb.getOffers());
+	
 	out.print("<td>" + "<a href = CartListController?id="+cb.getProd_id()+
 													"&stock="+cb.getStock()+
 													"&price="+cb.getPrice()+
@@ -162,16 +215,55 @@ body{
 													"&desc="+cb.getDescription()+
 													"&nm="+cb.getProd_name()+
 			"><span class = \"glyphicon glyphicon-shopping-cart\" style = color: \"red\"; fontsize: \"30px\";></span> </a></td>");
+	 
 	
 	out.print("</tr>");
-	out.print("</tbody>");
+	//out.print("</tbody>");
 	
 	}
 	%>
+	</tbody>
 </table>
 </div>
 </form>
-</div><br><br><br><br><br><br><br><br><br><br><br>
+</div><br><br>
+<%-- <div class="container">
+  <h2>Activate Modal with JavaScript</h2>
+  <!-- Trigger the modal with a button -->
+  <!-- <button type="button" class="btn btn-info btn-lg" id="myBtn">Open Modal</button> -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+          <% out.print("<img src =" + cb.getImage() + ">");%>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+ --%>
+<script>
+$(document).ready(function(){
+    $("#myBtn").click(function(){
+        $("#myModal").modal();
+    });
+});
+</script>
+
 <div>
 <div class="container text-center navbar" style = "background-color:#333;">
     <hr/>
