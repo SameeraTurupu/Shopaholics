@@ -3,14 +3,30 @@ package com.shopaholics.beans;
 public class CartsBean {
 	int order_id;
 	String pid;
+	String status;
+	String image;
+	public String getImage() {
+		return image.substring(62);// changed from 89
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 	public CartsBean(String pid,String pname,  int order_id, int stock,
-			int price) {
+			int price,String status,String image) {
 		super();
 		this.order_id = order_id;
 		this.pid = pid;
 		this.pname = pname;
 		this.stock = stock;
 		this.price = price;
+		this.status = status;
+		this.image = image;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	String pname;
 	int stock;

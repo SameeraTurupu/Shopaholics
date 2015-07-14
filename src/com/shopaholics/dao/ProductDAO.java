@@ -1,6 +1,5 @@
 package com.shopaholics.dao;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -20,7 +19,7 @@ import java.util.List;
 
 
 
-import javax.servlet.http.HttpServletRequest;
+import javax.naming.NamingException;
 import javax.servlet.http.HttpSession;
 
 import com.shopaholics.beans.CartsBean;
@@ -35,13 +34,36 @@ public class ProductDAO {
 	Statement st1 = null;
 	private int noOfRecords;
 	//PreparedStatement st2 =null;
-	public ProductDAO()throws ClassNotFoundException, SQLException{
+	public ProductDAO()throws ClassNotFoundException, NamingException, SQLException{
 		cdao = new ConnectionDAO();
 		conn = cdao.getConnection();
 	}
 	/*HttpSession hs = request.getSession();
 	//add name as session attribute
 	 String phone = (String)hs.getAttribute("phone");*/
+	public List<UserSignupBean> userDetails(String pid) throws SQLException,ClassNotFoundException{
+		List<UserSignupBean> conCollection = new ArrayList<UserSignupBean>();
+		String query = "select * from users WHERE email = '"+pid+"';";
+		st = conn.prepareStatement(query);
+		//System.out.println(user);
+		ResultSet result = st.executeQuery(query);
+		UserSignupBean contactBean2;
+		while(result.next()){
+			String user = result.getString("firstname");
+			
+		    String Lastname = result.getString("lastname");
+		    String email = result.getString("email");
+		    String password = result.getString("password");
+		    String address = result.getString("address");
+		    String city = result.getString("city");
+		    String state = result.getString("state");
+		    String phone = result.getString("phone");
+		    int zipcode = result.getInt("zipcode");
+		    contactBean2 = new UserSignupBean(user, Lastname, email, password, address, city, state, phone, zipcode);
+			conCollection.add(contactBean2);
+		}
+		return conCollection;
+	}
 	public List<ProductBean> listContacts(String name)throws SQLException, ClassNotFoundException{
 		List<ProductBean> clist = new ArrayList<ProductBean>();
 		System.out.println(name);
@@ -56,7 +78,7 @@ public class ProductDAO {
 			System.out.println(seller_id);
 		}
 
-		String query = "select prod_id, prod_name, description, stock, price, offers from product where seller_id= '"+seller_id+"'";
+		String query = "select prod_id, prod_name, description, stock, price, offers,image from product where seller_id= '"+seller_id+"'";
 		st = conn.createStatement();
 		ResultSet rst = st.executeQuery(query);
 		ProductBean cbean2;
@@ -66,8 +88,9 @@ public class ProductDAO {
 			String description = rst.getString("description");
 			int stock = rst.getInt("stock");
 			int price = rst.getInt("price");
+			String image=rst.getString("image");
 			int offers = rst.getInt("offers");
-			cbean2 = new ProductBean(prod_id, prod_name, description, stock, price, offers);
+			cbean2 = new ProductBean(prod_id, prod_name, description, stock, price, offers,image);
 			clist.add(cbean2);
 		}
 		System.out.println(clist.size());
@@ -111,7 +134,7 @@ public class ProductDAO {
 	}
 	public List<ProductBean> itemsdisplay(String category)throws SQLException, ClassNotFoundException{
 		List<ProductBean> clist = new ArrayList<ProductBean>();
-		String query = "select prod_id, prod_name, description, stock, price, offers from product where main_cat= '"+category+"'";
+		String query = "select * from product where main_cat= '"+category+"' and stock > 0";
 		st = conn.createStatement();
 		ResultSet rst = st.executeQuery(query);
 		ProductBean cbean2;
@@ -122,28 +145,33 @@ public class ProductDAO {
 			int stock = rst.getInt("stock");
 			int price = rst.getInt("price");
 			int offers = rst.getInt("offers");
-			cbean2 = new ProductBean(prod_id, prod_name, description, stock, price, offers);
+			String image=rst.getString("image");
+			cbean2 = new ProductBean(prod_id, prod_name, description, stock, price, offers,image);
 			clist.add(cbean2);
 		}
 		System.out.println(clist.size());
 		return clist;
 	}
-	public int addtocart(ProductBean cbean,String Email) throws SQLException{
+	public int addtocart(ProductBean cbean,String usrnme) throws SQLException{
 		int value = 1;
 		String prod_id= cbean.getProd_id();
 		String name = cbean.getProd_name();
 		int price = cbean.getPrice();
-		String query1 ="select user_id from users where email = '"+Email+"'";
+
+		String query1 ="select user_id from users where firstname = '"+usrnme+"'";
 		st1 = conn.createStatement();
 		System.out.println("after st1 ");
 		ResultSet rst1 = st1.executeQuery(query1);
 		System.out.println("after rst1");
+		String status = "yes";
 		int user_id = 0;
 		while(rst1.next()){
 			user_id = rst1.getInt("user_id");
 		}
 		//String phone = cbean.getPhone(); 
-		String query = "insert into carts(user_id,product_id,quantity,price, prod_name) values('"+user_id+"','"+prod_id+"','"+value+"','"+price+"','"+name+"')";
+		System.out.println("before insertion in cart");
+		String query = "insert into carts(user_id,product_id,quantity,price, prod_name,status) values('"+user_id+"','"+prod_id+"','"+value+"','"+price+"','"+name+"','"+status+"')";
+		System.out.println(query);
 		int result = 0;
 		st = conn.prepareStatement(query);
 		/*st.setString(1,cbean.getId());
@@ -164,6 +192,7 @@ public class ProductDAO {
 		CartsBean contactBean2;
 		while(result.next()){
 			String pId = result.getString("product_id");
+			String image = getimage(pId);
 			String pname = result.getString("prod_name");
 			int order_id = result.getInt("order_id");
 			//String desc = result.getString("description");
@@ -171,11 +200,21 @@ public class ProductDAO {
 			int price = result.getInt("price");
 			//int offer = result.getInt("offer");
 			int stock = result.getInt("quantity");
-			contactBean2 = new CartsBean(pId,pname,order_id,stock,price);
+			String status = result.getString("status");
+			contactBean2 = new CartsBean(pId,pname,order_id,stock,price,status,image);
 			conCollection.add(contactBean2);
 		}
-		System.out.println(conCollection.size());
 		return conCollection;
+	}
+	public String getimage(String pid) throws SQLException,ClassNotFoundException{
+		String image = null;
+		String query = "select image from product where prod_id = '"+pid+"'";
+		st = conn.createStatement();
+		ResultSet rst = st.executeQuery(query);
+		while(rst.next()){
+			 image=rst.getString("image");
+		}
+		return image;
 	}
 	public List<ProductBean> addcart(String pid) throws SQLException,ClassNotFoundException{
 		List<ProductBean> conCollection = new ArrayList<ProductBean>();
@@ -191,30 +230,8 @@ public class ProductDAO {
 			int price = result.getInt("price");
 			int offer = result.getInt("offer");
 			int stock = result.getInt("stock");
-			contactBean2 = new ProductBean(pId,pname,desc,price,offer,stock);
-			conCollection.add(contactBean2);
-		}
-		return conCollection;
-	}
-	public List<UserSignupBean> userDetails(String pid) throws SQLException,ClassNotFoundException{
-		List<UserSignupBean> conCollection = new ArrayList<UserSignupBean>();
-		String query = "select * from users WHERE email = '"+pid+"';";
-		st = conn.prepareStatement(query);
-		//System.out.println(user);
-		ResultSet result = st.executeQuery(query);
-		UserSignupBean contactBean2;
-		while(result.next()){
-			String user = result.getString("firstname");
-			
-		    String Lastname = result.getString("lastname");
-		    String email = result.getString("email");
-		    String password = result.getString("password");
-		    String address = result.getString("address");
-		    String city = result.getString("city");
-		    String state = result.getString("state");
-		    String phone = result.getString("phone");
-		    int zipcode = result.getInt("zipcode");
-		    contactBean2 = new UserSignupBean(user, Lastname, email, password, address, city, state, phone, zipcode);
+			String image=result.getString("image");
+			contactBean2 = new ProductBean(pId,pname,desc,price,offer,stock,image);
 			conCollection.add(contactBean2);
 		}
 		return conCollection;
@@ -238,52 +255,138 @@ public class ProductDAO {
 		System.out.println(result);
 		return user_id;	
 	}
-
-	/*public List<Product> viewAllEmployees(
-			int offset, 
-			int noOfRecords)
-			{
-		String query = "select SQL_CALC_FOUND_ROWS * from employee limit "
-				+ offset + ", " + noOfRecords;
-		List<Product> list = new ArrayList<Product>();
-		Product product = null;
-		try {
-
-			st1 = conn.createStatement();
-			ResultSet rst1 = st1.executeQuery(query);
-			while (rst1.next()) {
-				product = new Product();
-				product.setEmployeeId(rst1.getInt("emp_id"));
-				product.setEmployeeName(rst1.getString("emp_name"));
-				product.setSalary(rst1.getDouble("salary"));
-				product.setDeptName(rst1.getString("dept_name"));
-				list.add(product);
-			}
-			rst1.close();
-
-			rst1 = st1.executeQuery("SELECT FOUND_ROWS()");
-			if(rst1.next())
-				this.noOfRecords = rst1.getInt(1);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}finally
-		{
-			try {
-				if(st1 != null)
-					st1.close();
-				if(conn != null)
-					conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+	public void Status(int oid) 
+			throws SQLException {
+    	String name = null;
+    	String query1 ="select status from carts where order_id = '"+oid+"'";
+		st1 = conn.createStatement();
+		ResultSet rst1 = st1.executeQuery(query1);
+        String stats = null;
+        String stats1 = null;
+		while(rst1.next()){
+			stats = rst1.getString("status");
 		}
-		return list;
-			}
-
-	public int getNoOfRecords() {
-		return noOfRecords;
+    	int result;
+    	System.out.println("hi"+stats+"sam");
+        if(stats.equals("yes")) {
+        	System.out.println("hi sam in if1");
+        	stats1 = "no";
+        	String query = "UPDATE carts SET status = '" + stats1 + "' where order_id = '" + oid + "' ";
+        	st = conn.createStatement();
+    		result = st.executeUpdate(query);
+    		name = "yes";
+    	}
+        if(stats.equals("no")) {
+        	System.out.println("hi in if 2");
+        	stats1 = "yes";
+        	String query = "UPDATE carts SET status = '" + stats1 + "' where order_id = '" + oid + "' ";
+        	st = conn.createStatement();
+    		result = st.executeUpdate(query);
+    		name = "no";
+    		System.out.println("name in dao in if" + name);
+        }       	
+       }
+    public List<CartsBean> Finalbuy()throws SQLException,ClassNotFoundException{
+    	String status = "no";
+		//user = "1";
+		List<CartsBean> conCollection = new ArrayList<CartsBean>();
+		String query = "select * from carts where status = '"+status+"'";
+		st = conn.prepareStatement(query);
+		//System.out.println(user);
+		ResultSet result = st.executeQuery(query);
+		CartsBean contactBean2;
+		while(result.next()){
+			String pId = result.getString("product_id");
+			String image = getimage(pId);
+			decrStock(pId);
+			String pname = result.getString("prod_name");
+			int order_id = result.getInt("order_id");
+			//String desc = result.getString("description");
+			//String cid = result.getString("catid");
+			int price = result.getInt("price");
+			//int offer = result.getInt("offer");
+			int qty = result.getInt("quantity");
+			int user_id = result.getInt("user_id");
+			String status1 = result.getString("status");
+			contactBean2 = new CartsBean(pId,pname,order_id,qty,price,status1,image);
+			conCollection.add(contactBean2);
+		}
+		return conCollection;
+	} 
+    
+    public int totalprice()throws SQLException,ClassNotFoundException{ 
+    	int totalprice = 0;
+    	String status = "no";
+    	String query = "select sum(quantity *price) from carts where status = '"+status+"'";
+    	st = conn.prepareStatement(query);
+		//System.out.println(user);
+		ResultSet result = st.executeQuery(query);
+		while(result.next()){
+			totalprice = result.getInt(1);
+    }
+		return totalprice;
+    }
+    public void SoldCart() 
+			throws SQLException {
+		int result = 0;
+		String status = "no";
+		String query = "delete from carts where status='"+status+"'";
+		System.out.println("excecuting delete");
+		st = conn.prepareStatement(query);
+		System.out.println("excecuted delete");
+		result = st.executeUpdate(query);
+		System.out.println(result);
+		return;	
 	}
-*/
+    public void decrStock(String pid) 
+			throws SQLException {
+    	int result;
+    	String query = "UPDATE product SET stock = stock - 1 where prod_id = '" + pid + "' and stock > 0";
+    	System.out.println(query);
+    	st = conn.createStatement();
+		result = st.executeUpdate(query);
+    }
+    public List<ProductBean> featured()throws SQLException, ClassNotFoundException{
+		List<ProductBean> clist = new ArrayList<ProductBean>();
+		String query = "select * from product where stock > 0 and stock < 5";
+		st = conn.createStatement();
+		ResultSet rst = st.executeQuery(query);
+		ProductBean cbean2;
+		while(rst.next()){
+			String prod_id = rst.getString("prod_id");
+			String prod_name = rst.getString("prod_name");
+			String description = rst.getString("description");
+			int stock = rst.getInt("stock");
+			int price = rst.getInt("price");
+			int offers = rst.getInt("offers");
+			String image=rst.getString("image");
+			cbean2 = new ProductBean(prod_id, prod_name, description, stock, price, offers,image);
+			clist.add(cbean2);
+		}
+		System.out.println(clist.size());
+		return clist;
+	}
+    public List<ProductBean> offers()throws SQLException, ClassNotFoundException{
+		List<ProductBean> clist = new ArrayList<ProductBean>();
+		String query = "select * from product where stock > 0 and offers > 50";
+		st = conn.createStatement();
+		ResultSet rst = st.executeQuery(query);
+		ProductBean cbean2;
+		while(rst.next()){
+			String prod_id = rst.getString("prod_id");
+			String prod_name = rst.getString("prod_name");
+			String description = rst.getString("description");
+			int stock = rst.getInt("stock");
+			int price = rst.getInt("price");
+			int offers = rst.getInt("offers");
+			String image=rst.getString("image");
+			cbean2 = new ProductBean(prod_id, prod_name, description, stock, price, offers,image);
+			clist.add(cbean2);
+		}
+		System.out.println(clist.size());
+		return clist;
+	}
+    	
+    	
 }
+
