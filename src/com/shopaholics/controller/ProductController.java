@@ -1,9 +1,9 @@
 package com.shopaholics.controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
+import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +21,7 @@ public class ProductController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			doProcess(request, response);
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (ClassNotFoundException | NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -31,12 +31,12 @@ public class ProductController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			doProcess(request, response);
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (ClassNotFoundException | NamingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, SQLException {
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, ClassNotFoundException, NamingException {
 		int page = 1;
         int recordsPerPage = 5;
         if(request.getParameter("page") != null)
